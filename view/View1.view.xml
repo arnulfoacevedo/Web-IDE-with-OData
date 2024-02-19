@@ -3,27 +3,75 @@
 	<Page id="floatingFooterPage" floatingFooter="false" class="">
 
 		<headerContent>
-			<HBox>
-				<VBox>
-					<HBox class="sapUiTinyMargin" alignItems="Center">
+			<VBox visible="true">
+				<HBox class="top-bar">
+					<HBox class="sapUiTinyMargin ui-item" alignItems="Center">
 						<Label text="{i18n>SelectDate}" vAlign="Middle" design="Bold" textAlign="Center" width="3rem" />
-						<DatePicker id="rundateid" class="sapUiTinyMarginBegin" displayFormat="MM/yyyy"
-							valueFormat="yyyy-MM-dd" change="onDateChange" />
+						<DatePicker id="curDate" class="sapUiTinyMarginBegin" displayFormat="MM/yyyy"
+							valueFormat="yyyy-MM-dd" change="onDateChange" width="10em" />
 					</HBox>
-				</VBox>
-				<VBox class="sapUiSmallMarginEnd">
-					<HBox class="sapUiTinyMargin" alignItems="Center">
-						<Button text="Search" press="onSearch" design="Emphasized"></Button>
+					<HBox class="sapUiTinyMargin button-item" alignItems="Center">
+						<Button text="Search" press="onSearch"></Button>
+						<Button text="Clear" press="onClear"></Button>
+						<Button text="Sort by PRODUCT-CODE" press="onSortByCode"></Button>
 					</HBox>
-				</VBox>
-				<VBox>
-					<HBox class="sapUiTinyMargin" alignItems="Center">
-						<Label text="{i18n>SortLabel}" vAlign="Middle" design="Bold" textAlign="Center" width="5rem"
-							id="sortby" />
-						<Button text="PRODUCT-CODE" press="onSortByCode"></Button>
+				</HBox>
+
+				<HBox>
+					<HBox class="sapUiTinyMargin ui-item" alignItems="Center">
+						<Label text="RimSize: " vAlign="Middle" design="Bold" textAlign="Center" width="20em" />
+						<Input id="RimSize" placeholder="" width="10em" ></Input>
 					</HBox>
-				</VBox>
-			</HBox>
+					<HBox class="sapUiTinyMargin ui-item" alignItems="Center">
+						<Label text="Category: " vAlign="Middle" design="Bold" textAlign="Center" width="4em" />
+						<Input id="Category" placeholder="" width="10em"></Input>
+					</HBox>
+					<HBox class="sapUiTinyMargin ui-item" alignItems="Center">
+						<Label text="MFG: " vAlign="Middle" design="Bold" textAlign="Center" width="4em" />
+						<Input id="MFG" placeholder="" width="10em"></Input>
+					</HBox>
+					<HBox class="sapUiTinyMargin ui-item" alignItems="Center">
+						<Label text="Type: " vAlign="Middle" design="Bold" textAlign="Center" width="4em" />
+						<Input id="Type" placeholder="" width="10em"></Input>
+					</HBox>
+				</HBox>
+				<HBox>
+					<HBox class="sapUiTinyMargin ui-item" alignItems="Center">
+						<Label text="Line: " vAlign="Middle" design="Bold" textAlign="Center" width="4em" />
+						<Input id="Line" placeholder="" width="10em"></Input>
+					</HBox>
+					<HBox class="sapUiTinyMargin ui-item" alignItems="Center">
+						<Label text="WhlWidth: " vAlign="Middle" design="Bold" textAlign="Center" width="4em" />
+						<Input id="WhlWidth" placeholder="" width="10em"></Input>
+					</HBox>
+					<HBox class="sapUiTinyMargin ui-item" alignItems="Center">
+						<Label text="BoltPattern1: " vAlign="Middle" design="Bold" textAlign="Center" width="4em" />
+						<Input id="BoltPattern1" placeholder="" width="10em"></Input>
+					</HBox>
+					<HBox class="sapUiTinyMargin ui-item" alignItems="Center">
+						<Label text="BoltPattern2: " vAlign="Middle" design="Bold" textAlign="Center" width="4em" />
+						<Input id="BoltPattern2" placeholder="" width="10em"></Input>
+					</HBox>
+				</HBox>
+				<HBox>
+					<HBox class="sapUiTinyMargin ui-item" alignItems="Center">
+						<Label text="TypeCode: " vAlign="Middle" design="Bold" textAlign="Center" width="4em" />
+						<Input id="TypeCode" placeholder="" width="10em"></Input>
+					</HBox>
+					<HBox class="sapUiTinyMargin ui-item" alignItems="Center">
+						<Label text="TypeDesc: " vAlign="Middle" design="Bold" textAlign="Center" width="4em" />
+						<Input id="TypeDesc" placeholder="" width="10em"></Input>
+					</HBox>
+					<HBox class="sapUiTinyMargin ui-item" alignItems="Center">
+						<Label text="Width: " vAlign="Middle" design="Bold" textAlign="Center" width="4em" />
+						<Input id="Width" placeholder="" width="10em"></Input>
+					</HBox>
+					<HBox class="sapUiTinyMargin ui-item" alignItems="Center">
+						<Label text="AspectRatio: " vAlign="Middle" design="Bold" textAlign="Center" width="4em" />
+						<Input id="AspectRatio" placeholder="" width="10em"></Input>
+					</HBox>
+				</HBox>
+			</VBox>
 		</headerContent>
 
 		<subHeader>

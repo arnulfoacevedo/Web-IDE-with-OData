@@ -4,20 +4,82 @@
     padding: 0 !important;
 }
 
+.top-bar {
+    margin-top: 50px;
+}
+
 .sapMITBContent {
     padding: 0 !important;
 }
 
-.sapMPage>.sapMPageHeader+.sapMPageSubHeader+section {
-    top: 6.6em !important;
+.sapMFlexBox.ui-item {
+    width: 280px;
+    display: flex;
+    justify-content: flex-end;
 }
 
-button span {
+.sapMFlexBox.button-item {
+    width: calc(100% - 300px);
+    display: flex;
+    justify-content: flex-end;
+}
+
+.sapMInputBase,
+.sapMInputDivWrapper,
+.sapMInputBasePlaceholder {
+    line-height: 0 !important;
+    height: 100% !important;
+}
+
+.sapUiTinyMargin {
+    margin: 0 0.5em !important;
+}
+
+.sapMInputValHelp {
+    width: auto;
+    height: auto;
+    top: 16px !important;
+    right: 20px !important;
+}
+
+.sapMInputValHelpInner {
+    height: 0 !important;
+    width: 0 !important;
+    line-height: 0px !important;
+}
+
+.sapMFlexItemAlignAuto {
+    line-height: 0;
+}
+
+input {
+    height: 25px !important;
+    border-radius: 5px;
+}
+
+.sapMPage>.sapMPageHeader+.sapMPageSubHeader+section {
+    top: 248px !important;
+}
+
+.sapMBtn {
+    height: auto !important;
     background-color: #a3c3e1 !important;
+    padding: 0 !important;
+    border-radius: 5px;
+    margin: 0 5px;
+}
+
+.sapMBtn>span {
+    height: auto !important;
+}
+
+.sapMBtnContent {
+    padding: 13px 10px;
+    line-height: 0 !important;
 }
 
 header .sapMPageHeader {
-    height: 60px !important;
+    height: 200px !important;
 }
 
 .sapMBarChild {
