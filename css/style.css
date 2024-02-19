@@ -1,0 +1,72 @@
+/* Enter your custom styles here */
+.sapFDynamicPageContent,
+.sapFDynamicPageContentFitContainer {
+    padding: 0 !important;
+}
+
+.sapMITBContent {
+    padding: 0 !important;
+}
+
+.sapMPage>.sapMPageHeader+.sapMPageSubHeader+section {
+    top: 6.6em !important;
+}
+
+button span {
+    background-color: #a3c3e1 !important;
+}
+
+header .sapMPageHeader {
+    height: 60px !important;
+}
+
+.sapMBarChild {
+    margin-left: 0 !important;
+}
+
+.sapMIBar.sapMHeader-CTX {
+    background-color: #cee8ff;
+}
+
+footer .sapMListTblCellNoData {
+    display: none;
+}
+
+header table,
+footer table {
+    width: calc(100% - 8px) !important;
+}
+
+header table tbody {
+    display: none;
+}
+
+section table thead,
+footer table thead {
+    visibility: collapse;
+}
+
+.sapMListTbl .sapMGHLI.sapMLIB:not(.sapMLIBActive):not(.sapMLIBSelected):not(:hover),
+.sapMListTbl .sapMGHLI.sapMLIB.sapMLIBTypeInactive {
+    background-color: rgba(63, 81, 97, 0.161);
+}
+
+tr:has(+ tr[role]) td:nth-child(2) {
+    text-align: right !important;
+}
+
+tr:has(+ tr[role]) td:nth-child(2) span {
+    font-weight: bold;
+}
+
+section table tr:last-child td:nth-child(2) {
+    text-align: right !important;
+}
+
+section table tr:last-child td:nth-child(2) span {
+    font-weight: bold;
+}
+
+footer table tr:first-child td:nth-child(2) span {
+    font-weight: bold;
+}

@@ -1,0 +1,255 @@
+<mvc:View controllerName="salesreportZUSD_REPORT.controller.View1" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.f" height="100%">
+	<Page id="floatingFooterPage" floatingFooter="false" class="">
+
+		<headerContent>
+			<HBox>
+				<VBox>
+					<HBox class="sapUiTinyMargin" alignItems="Center">
+						<Label text="{i18n>SelectDate}" vAlign="Middle" design="Bold" textAlign="Center" width="3rem" />
+						<DatePicker id="rundateid" class="sapUiTinyMarginBegin" displayFormat="MM/yyyy"
+							valueFormat="yyyy-MM-dd" change="onDateChange" />
+					</HBox>
+				</VBox>
+				<VBox class="sapUiSmallMarginEnd">
+					<HBox class="sapUiTinyMargin" alignItems="Center">
+						<Button text="Search" press="onSearch" design="Emphasized"></Button>
+					</HBox>
+				</VBox>
+				<VBox>
+					<HBox class="sapUiTinyMargin" alignItems="Center">
+						<Label text="{i18n>SortLabel}" vAlign="Middle" design="Bold" textAlign="Center" width="5rem"
+							id="sortby" />
+						<Button text="PRODUCT-CODE" press="onSortByCode"></Button>
+					</HBox>
+				</VBox>
+			</HBox>
+		</headerContent>
+
+		<subHeader>
+			<OverflowToolbar>
+				<Table id="SF2_TABLE" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
+					<columns>
+						<Column width="5em">
+							<Text text="CODE" />
+						</Column>
+						<Column width="23em">
+							<Text text="PRODUCT SIZE" />
+						</Column>
+						<Column>
+							<Text id="SF2_Head_Month_1" text="" />
+						</Column>
+						<Column>
+							<Text id="SF2_Head_Month_2" text="" />
+						</Column>
+						<Column>
+							<Text id="SF2_Head_Month_3" text="" />
+						</Column>
+						<Column>
+							<Text id="SF2_Head_Month_4" text="" />
+						</Column>
+						<Column>
+							<Text id="SF2_Head_Month_5" text="" />
+						</Column>
+						<Column>
+							<Text id="SF2_Head_Month_6" text="" />
+						</Column>
+						<Column>
+							<Text id="SF2_Head_Month_7" text="" />
+						</Column>
+						<Column>
+							<Text id="SF2_Head_Month_8" text="" />
+						</Column>
+						<Column>
+							<Text id="SF2_Head_Month_9" text="" />
+						</Column>
+						<Column>
+							<Text id="SF2_Head_Month_10" text="" />
+						</Column>
+						<Column>
+							<Text id="SF2_Head_Month_11" text="" />
+						</Column>
+						<Column>
+							<Text id="SF2_Head_Month_12" text="" />
+						</Column>
+						<Column>
+							<Text id="SF2_Head_YEAR" text="YTD" />
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem>
+							<cells>
+								<Text text="{oLocalFinalsalesModel>CodeName}"></Text>
+								<Text text="{oLocalFinalsalesModel>ProductSize}"></Text>
+								<Text text="{oLocalFinalsalesModel>0}"></Text>
+								<Text text="{oLocalFinalsalesModel>1}"></Text>
+								<Text text="{oLocalFinalsalesModel>2}"></Text>
+								<Text text="{oLocalFinalsalesModel>3}"></Text>
+								<Text text="{oLocalFinalsalesModel>4}"></Text>
+								<Text text="{oLocalFinalsalesModel>5}"></Text>
+								<Text text="{oLocalFinalsalesModel>6}"></Text>
+								<Text text="{oLocalFinalsalesModel>7}"></Text>
+								<Text text="{oLocalFinalsalesModel>8}"></Text>
+								<Text text="{oLocalFinalsalesModel>9}"></Text>
+								<Text text="{oLocalFinalsalesModel>10}"></Text>
+								<Text text="{oLocalFinalsalesModel>11}"></Text>
+								<Text text="{oLocalFinalsalesModel>year}"></Text>
+
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</OverflowToolbar>
+		</subHeader>
+
+		<content>
+			<Table id="SF1_TABLE" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" alternateRowColors="true"
+				items="{ path: 'oLocalFinalsalesModel>/', sorter: { path: 'Articlecode' , group: '.getCode'} }">
+				<columns>
+					<Column width="5em">
+						<Text text="CODE" />
+					</Column>
+					<Column width="23em">
+						<Text text="PRODUCT SIZE" />
+					</Column>
+					<Column hAlign="Center">
+						<Text id="SF1_Head_Month_1" text="" />
+					</Column>
+					<Column hAlign="Center">
+						<Text id="SF1_Head_Month_2" text="" />
+					</Column>
+					<Column hAlign="Center">
+						<Text id="SF1_Head_Month_3" text="" />
+					</Column>
+					<Column hAlign="Center">
+						<Text id="SF1_Head_Month_4" text="" />
+					</Column>
+					<Column hAlign="Center">
+						<Text id="SF1_Head_Month_5" text="" />
+					</Column>
+					<Column hAlign="Center">
+						<Text id="SF1_Head_Month_6" text="" />
+					</Column>
+					<Column hAlign="Center">
+						<Text id="SF1_Head_Month_7" text="" />
+					</Column>
+					<Column hAlign="Center">
+						<Text id="SF1_Head_Month_8" text="" />
+					</Column>
+					<Column hAlign="Center">
+						<Text id="SF1_Head_Month_9" text="" />
+					</Column>
+					<Column hAlign="Center">
+						<Text id="SF1_Head_Month_10" text="" />
+					</Column>
+					<Column hAlign="Center">
+						<Text id="SF1_Head_Month_11" text="" />
+					</Column>
+					<Column hAlign="Center">
+						<Text id="SF1_Head_Month_12" text="" />
+					</Column>
+					<Column hAlign="Center">
+						<Text id="SF1_Head_YEAR" text="YTD" />
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{oLocalFinalsalesModel>CodeName}"></Text>
+							<Text text="{oLocalFinalsalesModel>ProductSize}"></Text>
+							<Text text="{oLocalFinalsalesModel>0}"></Text>
+							<Text text="{oLocalFinalsalesModel>1}"></Text>
+							<Text text="{oLocalFinalsalesModel>2}"></Text>
+							<Text text="{oLocalFinalsalesModel>3}"></Text>
+							<Text text="{oLocalFinalsalesModel>4}"></Text>
+							<Text text="{oLocalFinalsalesModel>5}"></Text>
+							<Text text="{oLocalFinalsalesModel>6}"></Text>
+							<Text text="{oLocalFinalsalesModel>7}"></Text>
+							<Text text="{oLocalFinalsalesModel>8}"></Text>
+							<Text text="{oLocalFinalsalesModel>9}"></Text>
+							<Text text="{oLocalFinalsalesModel>10}"></Text>
+							<Text text="{oLocalFinalsalesModel>11}"></Text>
+							<Text text="{oLocalFinalsalesModel>year}"></Text>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+
+		<footer>
+			<OverflowToolbar>
+				<Table id="SF3_TABLE" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders"
+					items="{ path: 'oLocalGrandModel>/'}">
+					<columns>
+						<Column width="10em">
+							<Text text="CODE" />
+						</Column>
+						<Column width="18em">
+							<Text text="PRODUCT SIZE" />
+						</Column>
+						<Column hAlign="Center">
+							<Text id="SF3_Head_Month_1" text="" />
+						</Column>
+						<Column hAlign="Center">
+							<Text id="SF3_Head_Month_2" text="" />
+						</Column>
+						<Column hAlign="Center">
+							<Text id="SF3_Head_Month_3" text="" />
+						</Column>
+						<Column hAlign="Center">
+							<Text id="SF3_Head_Month_4" text="" />
+						</Column>
+						<Column hAlign="Center">
+							<Text id="SF3_Head_Month_5" text="" />
+						</Column>
+						<Column hAlign="Center">
+							<Text id="SF3_Head_Month_6" text="" />
+						</Column>
+						<Column hAlign="Center">
+							<Text id="SF3_Head_Month_7" text="" />
+						</Column>
+						<Column hAlign="Center">
+							<Text id="SF3_Head_Month_8" text="" />
+						</Column>
+						<Column hAlign="Center">
+							<Text id="SF3_Head_Month_9" text="" />
+						</Column>
+						<Column hAlign="Center">
+							<Text id="SF3_Head_Month_10" text="" />
+						</Column>
+						<Column hAlign="Center">
+							<Text id="SF3_Head_Month_11" text="" />
+						</Column>
+						<Column hAlign="Center">
+							<Text id="SF3_Head_Month_12" text="" />
+						</Column>
+						<Column hAlign="Center">
+							<Text id="SF3_Head_YEAR" text="YTD" />
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem>
+							<cells>
+								<Text text="grand total"></Text>
+								<Text text=""></Text>
+								<Text text="{oLocalGrandModel>0}"></Text>
+								<Text text="{oLocalGrandModel>1}"></Text>
+								<Text text="{oLocalGrandModel>2}"></Text>
+								<Text text="{oLocalGrandModel>3}"></Text>
+								<Text text="{oLocalGrandModel>4}"></Text>
+								<Text text="{oLocalGrandModel>5}"></Text>
+								<Text text="{oLocalGrandModel>6}"></Text>
+								<Text text="{oLocalGrandModel>7}"></Text>
+								<Text text="{oLocalGrandModel>8}"></Text>
+								<Text text="{oLocalGrandModel>9}"></Text>
+								<Text text="{oLocalGrandModel>10}"></Text>
+								<Text text="{oLocalGrandModel>11}"></Text>
+								<Text text="{oLocalGrandModel>year}"></Text>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</mvc:View>
