@@ -6,12 +6,17 @@ sap.ui.define([
 
 	return Controller.extend("salesreportZUSD_REPORT.controller.View1", {
 		sortby: true,
+		toggleTab: false,
 
 		filterKeys: ['RimSize', 'Category', 'MFG', 'Type', 'Line', 'WhlWidth', 'BoltPattern1', 'BoltPattern2', 'TypeCode', 'TypeDesc', 'Width', 'AspectRatio'],
+
+		selectArticleType: 'All',
 
 		onInit: function () {
 			this.byId("curDate").setDateValue(new Date());
 			this.byId("curDate").setMaxDate(new Date());
+			// this.onToggleFilterBar();
+			// this.getData();
 		},
 		onSortByCode: function (e) {
 			this.getData(true);
@@ -20,14 +25,47 @@ sap.ui.define([
 			e.getSource().setText(label);
 		},
 
-		// clearTable: function() {
-		// 	var table 	= this.getView().byId("SF1_TABLE");
 
-		// 	var oModel = new sap.ui.model.json.JSONModel();
-		// 	oModel.setData([]);
-			
-		// 	table.setModel(oModel, "oLocalFinalsalesModel");
-		// },
+		onTabSelect: function(e) {
+			var $this = this;
+			this.selectArticleType = e.getParameter('key');
+			this.setAllFiltersValue('');
+			switch (this.selectArticleType) {
+				case 'All':
+					$this.setVisibleAllFilters(true);
+					break;
+				case 'ZTIR':
+					$this.setVisibleAllFilters(false);
+					$this.byId('MFG').setEnabled(true);
+					$this.byId('Width').setEnabled(true);
+					$this.byId('AspectRatio').setEnabled(true);
+					$this.byId('Line').setEnabled(true);
+					break;
+				case 'ZWHL':
+					$this.setVisibleAllFilters(false);
+					$this.byId('MFG').setEnabled(true);
+					$this.byId('BoltPattern1').setEnabled(true);
+					$this.byId('AspectRatio').setEnabled(true);
+					break;
+				default:
+					$this.setVisibleAllFilters(false);
+					$this.byId('MFG').setEnabled(true);
+					break;		
+				}
+			this.getData();
+		},
+
+		onToggleFilterBar: function() {
+			if (this.toggleTab) {
+				console.log("d");
+				$('header .sapMPageHeader').css('height', '45px');
+				$(".sapMPage>.sapMPageHeader + .sapMPageSubHeader + section").css('top', '93px');
+			} else {
+				$('header .sapMPageHeader').css('height', '160px');
+				$(".sapMPage>.sapMPageHeader + .sapMPageSubHeader + section").css('top', '208px');
+			}
+			this.toggleTab = !this.toggleTab;
+		},
 
 		// get data by year, month
 		onSearch: function () {
@@ -44,6 +82,20 @@ sap.ui.define([
 			this.getData();
 		},
 
+		setVisibleAllFilters: function(mode) {
+			var $this = this;
+			$this.filterKeys.forEach(function(key) {
+				$this.byId(key).setEnabled(mode);
+			});
+		},
+
+		setAllFiltersValue: function(val) {
+			var $this = this;
+			$this.filterKeys.forEach(function(key) {
+				$this.byId(key).setValue(val);
+			});
+		},
+
 		getCode: function (oContext) {
 			return oContext.getProperty('ProductCode');
 		},
@@ -53,12 +105,12 @@ sap.ui.define([
 			var $this 				= this;
 			var oLocalModel 		= this.getView().getModel("localModel");
 			var oLocalData 			= oLocalModel.getData().results;
-			var tempData 			= {};
-			var filterValues 		= {};
 			var selectedDate 		= this.byId('curDate').getDateValue();
 			var dateRange 			= this.setTableHeaderByMonth(selectedDate);
-
+			var tempData 			= {};
+			var filterValues 		= {};
 			var notEmptyNum 		= 0;
+
 			$this.filterKeys.forEach(function(key) {
 				var value 			= $this.byId(key).getValue();
 				filterValues[key] 	= $.trim(value);
@@ -71,6 +123,14 @@ sap.ui.define([
 
 				if (dateRange.indexOf(item.Date_YearMonth) > -1) {
 					var num = 0;
+
+					if ($this.selectArticleType != 'All') {
+						if ($this.selectArticleType == 'Other') {
+							if (item['ArticleType'] == 'ZTIR' || item['ArticleType'] == 'ZWHL') continue;
+						} else {
+							if (item['ArticleType'] != $this.selectArticleType) continue;
+						}
+					}
 					for (var key in filterValues) {
 						if (filterValues[key] != '' && item[key].indexOf(filterValues[key]) > -1) { 		// item[key] == filterValues[key]
 							num++;

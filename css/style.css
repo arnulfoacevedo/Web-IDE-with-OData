@@ -1,3 +1,6 @@
+* {
+    outline: none !important;
+}
 /* Enter your custom styles here */
 .sapFDynamicPageContent,
 .sapFDynamicPageContentFitContainer {
@@ -5,13 +8,15 @@
 }
 
 .top-bar {
-    margin-top: 50px;
+    margin-top: 10px;
 }
 
 .sapMITBContent {
     padding: 0 !important;
 }
-
+.sapMITH {
+    border-bottom: 0;
+}
 .sapMFlexBox.ui-item {
     width: 280px;
     display: flex;
@@ -58,7 +63,7 @@ input {
 }
 
 .sapMPage>.sapMPageHeader+.sapMPageSubHeader+section {
-    top: 248px !important;
+    /* top: 206px !important; */
 }
 
 .sapMBtn {
@@ -79,7 +84,25 @@ input {
 }
 
 header .sapMPageHeader {
-    height: 200px !important;
+    height: 45px;
+}
+
+.sapMPage>.sapMPageHeader+.sapMPageSubHeader+section {
+    top: 93px;
+}
+
+.sapMPage>.sapMPageSubHeader+section {
+    top: 0;
+}
+
+.toggle-filter {
+    width: 20px;
+    height: 20px !important;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    background-color: #fff !important;
+    box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
 }
 
 .sapMBarChild {
@@ -88,6 +111,14 @@ header .sapMPageHeader {
 
 .sapMIBar.sapMHeader-CTX {
     background-color: #cee8ff;
+}
+.sapMBtnInner {
+    min-width: 0 !important;
+}
+.toggle-filter .sapMBtnIcon {
+    width: 16px;
+    line-height: 15px !important;
+    font-size: 14px;
 }
 
 footer .sapMListTblCellNoData {
@@ -131,4 +162,12 @@ section table tr:last-child td:nth-child(2) span {
 
 footer table tr:first-child td:nth-child(2) span {
     font-weight: bold;
+}
+
+.sapMPageFooter {
+    bottom: 100px !important;
+}
+
+.sapMPageWithFooter>section {
+    bottom: 147px !important;
 }
