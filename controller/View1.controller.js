@@ -214,7 +214,7 @@ sap.ui.define([
 					if (curProductCode != nextProductCode) {
 						var row = {}, total = 0;
 						row['ArticleCode'] 		= finalData[i].Articlecode;
-						row['CodeName'] 		= 'sub total';
+						row['CodeName'] 		= 'SUB TOTAL';
 						row['ProductCode'] 		= curProductCode;
 						dateRange.forEach(function (monthStr, monthIndex) {
 							row[monthIndex] = totalRow[monthIndex] == 0 ? '' : totalRow[monthIndex];
@@ -235,7 +235,7 @@ sap.ui.define([
 			// add grand total row
 			var row 				= {};
 			row['ArticleCode'] 		= 'grand';
-			row['CodeName'] 		= 'grand total';
+			row['CodeName'] 		= 'Grand total';
 			row['ProductCode'] 		= '';
 			row['year'] = grand_total;
 			dateRange.forEach(function (monthStr, monthIndex) {
@@ -249,6 +249,8 @@ sap.ui.define([
 			// dataModel for grand total
 			var oLocalGrandModel = new JSONModel([row]);
 			this.getView().setModel(oLocalGrandModel, "oLocalGrandModel");
+
+			$("#__xmlview0--SF3_TABLE").css('width', '300px !important');
 		},
 
 		// set dynamic header of table, and return array of ids

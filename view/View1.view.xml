@@ -1,314 +1,244 @@
-<mvc:View controllerName="salesreportZUSD_REPORT.controller.View1" xmlns:html="http://www.w3.org/1999/xhtml"
-	xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.f" height="100%">
-	<IconTabBar id="idIconTabBar" select="onTabSelect" class="sapUiResponsiveContentPadding">
-		<items>
-			<IconTabFilter icon="sap-icon://multiselect-all" text="All" key="All" />
-			<IconTabSeparator />
-			<IconTabFilter icon="sap-icon://multi-select" iconColor="Positive" text="ZTIR" key="ZTIR" />
-			<IconTabFilter icon="sap-icon://multi-select" iconColor="Critical" text="ZWHL" key="ZWHL" />
-			<IconTabFilter icon="sap-icon://multiselect-none" iconColor="Negative" text="Other" key="Other" />
-		</items>
-	</IconTabBar>
-	<Page id="floatingFooterPage" floatingFooter="false" class="">
-		<headerContent>
-			<VBox visible="true">
-				<HBox class="top-bar">
-					<HBox class="sapUiTinyMargin ui-item" alignItems="Center">
-						<Label text="{i18n>SelectDate}" vAlign="Middle" design="Bold" textAlign="Center" width="3rem" />
+<mvc:View controllerName="salesreportZUSD_REPORT.controller.View1" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	xmlns:f="sap.f" xmlns:layout="sap.ui.layout" height="100%">
+	<f:DynamicPage id="dynamicPageId" stickySubheaderProvider="iconTabBar" class="sapUiNoContentPadding"
+		toggleHeaderOnTitleClick="{/titleClickable}">
+		<!-- DynamicPage Title -->
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:actions>
+					<Button text="Search" press="onSearch" type="Emphasized"></Button>
+					<Button text="Clear" press="onClear" type="Emphasized"></Button>
+					<Button text="Sort by PRODUCT-CODE" press="onSortByCode" type="Emphasized"></Button>
+				</f:actions>
+				<f:content>
+					<OverflowToolbar>
 						<DatePicker id="curDate" class="sapUiTinyMarginBegin" displayFormat="MM/yyyy"
 							valueFormat="yyyy-MM-dd" change="onDateChange" width="10em" />
-					</HBox>
-					<HBox class="sapUiTinyMargin button-item" alignItems="Center">
-						<Button text="Search" press="onSearch"></Button>
-						<Button text="Clear" press="onClear"></Button>
-						<Button text="Sort by PRODUCT-CODE" press="onSortByCode"></Button>
-					</HBox>
-				</HBox>
+					</OverflowToolbar>
 
-				<VBox id="filter_bar">
+				</f:content>
+			</f:DynamicPageTitle>
+		</f:title>
+		<!-- DynamicPage Header -->
+		<f:header>
+			<f:DynamicPageHeader pinnable="true">
+				<layout:HorizontalLayout allowWrapping="true">
 					<HBox>
 						<HBox class="sapUiTinyMargin ui-item" alignItems="Center">
-							<Label text="RimSize: " vAlign="Middle" design="Bold" textAlign="Center" width="20em" />
-							<Input id="RimSize" placeholder="" width="10em"></Input>
+							<Label text="RimSize: " vAlign="Middle" design="Bold" textAlign="Center" width="8em" />
+							<Input id="RimSize" placeholder="" width="10em" class="sapUiSmallMarginBottom" />
 						</HBox>
 						<HBox class="sapUiTinyMargin ui-item" alignItems="Center">
-							<Label text="Category: " vAlign="Middle" design="Bold" textAlign="Center" width="4em" />
+							<Label text="Category: " vAlign="Middle" design="Bold" textAlign="Center" width="8em" />
 							<Input id="Category" placeholder="" width="10em"></Input>
 						</HBox>
 						<HBox class="sapUiTinyMargin ui-item" alignItems="Center">
-							<Label text="MFG: " vAlign="Middle" design="Bold" textAlign="Center" width="4em" />
+							<Label text="MFG: " vAlign="Middle" design="Bold" textAlign="Center" width="8em" />
 							<Input id="MFG" placeholder="" width="10em"></Input>
 						</HBox>
 						<HBox class="sapUiTinyMargin ui-item" alignItems="Center">
-							<Label text="Type: " vAlign="Middle" design="Bold" textAlign="Center" width="4em" />
+							<Label text="Type: " vAlign="Middle" design="Bold" textAlign="Center" width="8em" />
 							<Input id="Type" placeholder="" width="10em"></Input>
 						</HBox>
 					</HBox>
 					<HBox>
 						<HBox class="sapUiTinyMargin ui-item" alignItems="Center">
-							<Label text="Line: " vAlign="Middle" design="Bold" textAlign="Center" width="4em" />
+							<Label text="Line: " vAlign="Middle" design="Bold" textAlign="Center" width="8em" />
 							<Input id="Line" placeholder="" width="10em"></Input>
 						</HBox>
 						<HBox class="sapUiTinyMargin ui-item" alignItems="Center">
-							<Label text="WhlWidth: " vAlign="Middle" design="Bold" textAlign="Center" width="4em" />
+							<Label text="WhlWidth: " vAlign="Middle" design="Bold" textAlign="Center" width="8em" />
 							<Input id="WhlWidth" placeholder="" width="10em"></Input>
 						</HBox>
 						<HBox class="sapUiTinyMargin ui-item" alignItems="Center">
-							<Label text="BoltPattern1: " vAlign="Middle" design="Bold" textAlign="Center" width="4em" />
+							<Label text="BoltPattern1: " vAlign="Middle" design="Bold" textAlign="Center" width="8em" />
 							<Input id="BoltPattern1" placeholder="" width="10em"></Input>
 						</HBox>
 						<HBox class="sapUiTinyMargin ui-item" alignItems="Center">
-							<Label text="BoltPattern2: " vAlign="Middle" design="Bold" textAlign="Center" width="4em" />
+							<Label text="BoltPattern2: " vAlign="Middle" design="Bold" textAlign="Center" width="8em" />
 							<Input id="BoltPattern2" placeholder="" width="10em"></Input>
 						</HBox>
 					</HBox>
 					<HBox>
 						<HBox class="sapUiTinyMargin ui-item" alignItems="Center">
-							<Label text="TypeCode: " vAlign="Middle" design="Bold" textAlign="Center" width="4em" />
+							<Label text="TypeCode: " vAlign="Middle" design="Bold" textAlign="Center" width="8em" />
 							<Input id="TypeCode" placeholder="" width="10em"></Input>
 						</HBox>
 						<HBox class="sapUiTinyMargin ui-item" alignItems="Center">
-							<Label text="TypeDesc: " vAlign="Middle" design="Bold" textAlign="Center" width="4em" />
+							<Label text="TypeDesc: " vAlign="Middle" design="Bold" textAlign="Center" width="8em" />
 							<Input id="TypeDesc" placeholder="" width="10em"></Input>
 						</HBox>
 						<HBox class="sapUiTinyMargin ui-item" alignItems="Center">
-							<Label text="Width: " vAlign="Middle" design="Bold" textAlign="Center" width="4em" />
+							<Label text="Width: " vAlign="Middle" design="Bold" textAlign="Center" width="8em" />
 							<Input id="Width" placeholder="" width="10em"></Input>
 						</HBox>
 						<HBox class="sapUiTinyMargin ui-item" alignItems="Center">
-							<Label text="AspectRatio: " vAlign="Middle" design="Bold" textAlign="Center" width="4em" />
+							<Label text="AspectRatio: " vAlign="Middle" design="Bold" textAlign="Center" width="8em" />
 							<Input id="AspectRatio" placeholder="" width="10em"></Input>
 						</HBox>
 					</HBox>
-				</VBox>
-			</VBox>
-			<Button text="" press="onToggleFilterBar" class="toggle-filter" icon="sap-icon://resize-vertical"></Button>
-		</headerContent>
-
-		<subHeader>
-			<OverflowToolbar>
-				<Table id="SF2_TABLE" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
-					<columns>
-						<Column width="5em">
-							<Text text="CODE" />
-						</Column>
-						<Column width="23em">
-							<Text text="PRODUCT SIZE" />
-						</Column>
-						<Column>
-							<Text id="SF2_Head_Month_1" text="" />
-						</Column>
-						<Column>
-							<Text id="SF2_Head_Month_2" text="" />
-						</Column>
-						<Column>
-							<Text id="SF2_Head_Month_3" text="" />
-						</Column>
-						<Column>
-							<Text id="SF2_Head_Month_4" text="" />
-						</Column>
-						<Column>
-							<Text id="SF2_Head_Month_5" text="" />
-						</Column>
-						<Column>
-							<Text id="SF2_Head_Month_6" text="" />
-						</Column>
-						<Column>
-							<Text id="SF2_Head_Month_7" text="" />
-						</Column>
-						<Column>
-							<Text id="SF2_Head_Month_8" text="" />
-						</Column>
-						<Column>
-							<Text id="SF2_Head_Month_9" text="" />
-						</Column>
-						<Column>
-							<Text id="SF2_Head_Month_10" text="" />
-						</Column>
-						<Column>
-							<Text id="SF2_Head_Month_11" text="" />
-						</Column>
-						<Column>
-							<Text id="SF2_Head_Month_12" text="" />
-						</Column>
-						<Column>
-							<Text id="SF2_Head_YEAR" text="YTD" />
-						</Column>
-					</columns>
-					<items>
-						<ColumnListItem>
-							<cells>
-								<Text text="{oLocalFinalsalesModel>CodeName}"></Text>
-								<Text text="{oLocalFinalsalesModel>ProductSize}"></Text>
-								<Text text="{oLocalFinalsalesModel>0}"></Text>
-								<Text text="{oLocalFinalsalesModel>1}"></Text>
-								<Text text="{oLocalFinalsalesModel>2}"></Text>
-								<Text text="{oLocalFinalsalesModel>3}"></Text>
-								<Text text="{oLocalFinalsalesModel>4}"></Text>
-								<Text text="{oLocalFinalsalesModel>5}"></Text>
-								<Text text="{oLocalFinalsalesModel>6}"></Text>
-								<Text text="{oLocalFinalsalesModel>7}"></Text>
-								<Text text="{oLocalFinalsalesModel>8}"></Text>
-								<Text text="{oLocalFinalsalesModel>9}"></Text>
-								<Text text="{oLocalFinalsalesModel>10}"></Text>
-								<Text text="{oLocalFinalsalesModel>11}"></Text>
-								<Text text="{oLocalFinalsalesModel>year}"></Text>
-
-							</cells>
-						</ColumnListItem>
-					</items>
-				</Table>
-			</OverflowToolbar>
-		</subHeader>
-
-		<content>
-			<Table id="SF1_TABLE" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" alternateRowColors="true"
-				items="{ path: 'oLocalFinalsalesModel>/', sorter: { path: 'Articlecode' , group: '.getCode'} }">
-				<columns>
-					<Column width="5em">
-						<Text text="CODE" />
-					</Column>
-					<Column width="23em">
-						<Text text="PRODUCT SIZE" />
-					</Column>
-					<Column hAlign="Center">
-						<Text id="SF1_Head_Month_1" text="" />
-					</Column>
-					<Column hAlign="Center">
-						<Text id="SF1_Head_Month_2" text="" />
-					</Column>
-					<Column hAlign="Center">
-						<Text id="SF1_Head_Month_3" text="" />
-					</Column>
-					<Column hAlign="Center">
-						<Text id="SF1_Head_Month_4" text="" />
-					</Column>
-					<Column hAlign="Center">
-						<Text id="SF1_Head_Month_5" text="" />
-					</Column>
-					<Column hAlign="Center">
-						<Text id="SF1_Head_Month_6" text="" />
-					</Column>
-					<Column hAlign="Center">
-						<Text id="SF1_Head_Month_7" text="" />
-					</Column>
-					<Column hAlign="Center">
-						<Text id="SF1_Head_Month_8" text="" />
-					</Column>
-					<Column hAlign="Center">
-						<Text id="SF1_Head_Month_9" text="" />
-					</Column>
-					<Column hAlign="Center">
-						<Text id="SF1_Head_Month_10" text="" />
-					</Column>
-					<Column hAlign="Center">
-						<Text id="SF1_Head_Month_11" text="" />
-					</Column>
-					<Column hAlign="Center">
-						<Text id="SF1_Head_Month_12" text="" />
-					</Column>
-					<Column hAlign="Center">
-						<Text id="SF1_Head_YEAR" text="YTD" />
-					</Column>
-				</columns>
+				</layout:HorizontalLayout>
+			</f:DynamicPageHeader>
+		</f:header>
+		<f:content>
+			<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding" select="onTabSelect">
 				<items>
-					<ColumnListItem>
-						<cells>
-							<Text text="{oLocalFinalsalesModel>CodeName}"></Text>
-							<Text text="{oLocalFinalsalesModel>ProductSize}"></Text>
-							<Text text="{oLocalFinalsalesModel>0}"></Text>
-							<Text text="{oLocalFinalsalesModel>1}"></Text>
-							<Text text="{oLocalFinalsalesModel>2}"></Text>
-							<Text text="{oLocalFinalsalesModel>3}"></Text>
-							<Text text="{oLocalFinalsalesModel>4}"></Text>
-							<Text text="{oLocalFinalsalesModel>5}"></Text>
-							<Text text="{oLocalFinalsalesModel>6}"></Text>
-							<Text text="{oLocalFinalsalesModel>7}"></Text>
-							<Text text="{oLocalFinalsalesModel>8}"></Text>
-							<Text text="{oLocalFinalsalesModel>9}"></Text>
-							<Text text="{oLocalFinalsalesModel>10}"></Text>
-							<Text text="{oLocalFinalsalesModel>11}"></Text>
-							<Text text="{oLocalFinalsalesModel>year}"></Text>
-						</cells>
-					</ColumnListItem>
+					<IconTabFilter icon="sap-icon://multiselect-all" text="All" key="All" design="Horizontal" />
+					<IconTabSeparator />
+					<IconTabFilter icon="sap-icon://multi-select" iconColor="Positive" text="ZTIR" key="ZTIR"
+						design="Horizontal" />
+					<IconTabFilter icon="sap-icon://multi-select" iconColor="Critical" text="ZWHL" key="ZWHL"
+						design="Horizontal" />
+					<IconTabFilter icon="sap-icon://multiselect-none" iconColor="Negative" text="Other" key="Other"
+						design="Horizontal" />
 				</items>
-			</Table>
-		</content>
+				<content>
+					<Table id="SF1_TABLE" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" alternateRowColors="false"
+						items="{ path: 'oLocalFinalsalesModel>/', sorter: { path: 'Articlecode' , group: '.getCode'} }">
+						<columns>
+							<Column width="5em" hAlign="Right">
+								<Text text="CODE" />
+							</Column>
+							<Column width="23em">
+								<Text text="PRODUCT SIZE" />
+							</Column>
+							<Column hAlign="Right">
+								<Text id="SF2_Head_Month_1" text="" />
+							</Column>
+							<Column hAlign="Right">
+								<Text id="SF2_Head_Month_2" text="" />
+							</Column>
+							<Column hAlign="Right">
+								<Text id="SF2_Head_Month_3" text="" />
+							</Column>
+							<Column hAlign="Right">
+								<Text id="SF2_Head_Month_4" text="" />
+							</Column>
+							<Column hAlign="Right">
+								<Text id="SF2_Head_Month_5" text="" />
+							</Column>
+							<Column hAlign="Right">
+								<Text id="SF2_Head_Month_6" text="" />
+							</Column>
+							<Column hAlign="Right">
+								<Text id="SF2_Head_Month_7" text="" />
+							</Column>
+							<Column hAlign="Right">
+								<Text id="SF2_Head_Month_8" text="" />
+							</Column>
+							<Column hAlign="Right">
+								<Text id="SF2_Head_Month_9" text="" />
+							</Column>
+							<Column hAlign="Right">
+								<Text id="SF2_Head_Month_10" text="" />
+							</Column>
+							<Column hAlign="Right">
+								<Text id="SF2_Head_Month_11" text="" />
+							</Column>
+							<Column hAlign="Right">
+								<Text id="SF2_Head_Month_12" text="" />
+							</Column>
+							<Column hAlign="Right">
+								<Text id="SF2_Head_YEAR" text="YTD" />
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<Text text="{oLocalFinalsalesModel>CodeName}"></Text>
+									<Text text="{oLocalFinalsalesModel>ProductSize}"></Text>
+									<Text text="{oLocalFinalsalesModel>0}"></Text>
+									<Text text="{oLocalFinalsalesModel>1}"></Text>
+									<Text text="{oLocalFinalsalesModel>2}"></Text>
+									<Text text="{oLocalFinalsalesModel>3}"></Text>
+									<Text text="{oLocalFinalsalesModel>4}"></Text>
+									<Text text="{oLocalFinalsalesModel>5}"></Text>
+									<Text text="{oLocalFinalsalesModel>6}"></Text>
+									<Text text="{oLocalFinalsalesModel>7}"></Text>
+									<Text text="{oLocalFinalsalesModel>8}"></Text>
+									<Text text="{oLocalFinalsalesModel>9}"></Text>
+									<Text text="{oLocalFinalsalesModel>10}"></Text>
+									<Text text="{oLocalFinalsalesModel>11}"></Text>
+									<Text text="{oLocalFinalsalesModel>year}"></Text>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+					<Table id="SF3_TABLE" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders"
+						items="{ path: 'oLocalGrandModel>/'}">
+						<columns>
+							<Column width="10em">
+								<Text text="CODE" />
+							</Column>
+							<Column width="18em">
+								<Text text="PRODUCT SIZE" />
+							</Column>
+							<Column hAlign="Right">
+								<Text id="SF3_Head_Month_1" text="" />
+							</Column>
+							<Column hAlign="Right">
+								<Text id="SF3_Head_Month_2" text="" />
+							</Column>
+							<Column hAlign="Right">
+								<Text id="SF3_Head_Month_3" text="" />
+							</Column>
+							<Column hAlign="Right">
+								<Text id="SF3_Head_Month_4" text="" />
+							</Column>
+							<Column hAlign="Right">
+								<Text id="SF3_Head_Month_5" text="" />
+							</Column>
+							<Column hAlign="Right">
+								<Text id="SF3_Head_Month_6" text="" />
+							</Column>
+							<Column hAlign="Right">
+								<Text id="SF3_Head_Month_7" text="" />
+							</Column>
+							<Column hAlign="Right">
+								<Text id="SF3_Head_Month_8" text="" />
+							</Column>
+							<Column hAlign="Right">
+								<Text id="SF3_Head_Month_9" text="" />
+							</Column>
+							<Column hAlign="Right">
+								<Text id="SF3_Head_Month_10" text="" />
+							</Column>
+							<Column hAlign="Right">
+								<Text id="SF3_Head_Month_11" text="" />
+							</Column>
+							<Column hAlign="Right">
+								<Text id="SF3_Head_Month_12" text="" />
+							</Column>
+							<Column hAlign="Right">
+								<Text id="SF3_Head_YEAR" text="YTD" />
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<Text text="GRANT TOTAL"></Text>
+									<Text text=""></Text>
+									<Text text="{oLocalGrandModel>0}"></Text>
+									<Text text="{oLocalGrandModel>1}"></Text>
+									<Text text="{oLocalGrandModel>2}"></Text>
+									<Text text="{oLocalGrandModel>3}"></Text>
+									<Text text="{oLocalGrandModel>4}"></Text>
+									<Text text="{oLocalGrandModel>5}"></Text>
+									<Text text="{oLocalGrandModel>6}"></Text>
+									<Text text="{oLocalGrandModel>7}"></Text>
+									<Text text="{oLocalGrandModel>8}"></Text>
+									<Text text="{oLocalGrandModel>9}"></Text>
+									<Text text="{oLocalGrandModel>10}"></Text>
+									<Text text="{oLocalGrandModel>11}"></Text>
+									<Text text="{oLocalGrandModel>year}"></Text>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
 
-		<footer>
-			<OverflowToolbar>
-				<Table id="SF3_TABLE" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders"
-					items="{ path: 'oLocalGrandModel>/'}">
-					<columns>
-						<Column width="10em">
-							<Text text="CODE" />
-						</Column>
-						<Column width="18em">
-							<Text text="PRODUCT SIZE" />
-						</Column>
-						<Column hAlign="Center">
-							<Text id="SF3_Head_Month_1" text="" />
-						</Column>
-						<Column hAlign="Center">
-							<Text id="SF3_Head_Month_2" text="" />
-						</Column>
-						<Column hAlign="Center">
-							<Text id="SF3_Head_Month_3" text="" />
-						</Column>
-						<Column hAlign="Center">
-							<Text id="SF3_Head_Month_4" text="" />
-						</Column>
-						<Column hAlign="Center">
-							<Text id="SF3_Head_Month_5" text="" />
-						</Column>
-						<Column hAlign="Center">
-							<Text id="SF3_Head_Month_6" text="" />
-						</Column>
-						<Column hAlign="Center">
-							<Text id="SF3_Head_Month_7" text="" />
-						</Column>
-						<Column hAlign="Center">
-							<Text id="SF3_Head_Month_8" text="" />
-						</Column>
-						<Column hAlign="Center">
-							<Text id="SF3_Head_Month_9" text="" />
-						</Column>
-						<Column hAlign="Center">
-							<Text id="SF3_Head_Month_10" text="" />
-						</Column>
-						<Column hAlign="Center">
-							<Text id="SF3_Head_Month_11" text="" />
-						</Column>
-						<Column hAlign="Center">
-							<Text id="SF3_Head_Month_12" text="" />
-						</Column>
-						<Column hAlign="Center">
-							<Text id="SF3_Head_YEAR" text="YTD" />
-						</Column>
-					</columns>
-					<items>
-						<ColumnListItem>
-							<cells>
-								<Text text="grand total"></Text>
-								<Text text=""></Text>
-								<Text text="{oLocalGrandModel>0}"></Text>
-								<Text text="{oLocalGrandModel>1}"></Text>
-								<Text text="{oLocalGrandModel>2}"></Text>
-								<Text text="{oLocalGrandModel>3}"></Text>
-								<Text text="{oLocalGrandModel>4}"></Text>
-								<Text text="{oLocalGrandModel>5}"></Text>
-								<Text text="{oLocalGrandModel>6}"></Text>
-								<Text text="{oLocalGrandModel>7}"></Text>
-								<Text text="{oLocalGrandModel>8}"></Text>
-								<Text text="{oLocalGrandModel>9}"></Text>
-								<Text text="{oLocalGrandModel>10}"></Text>
-								<Text text="{oLocalGrandModel>11}"></Text>
-								<Text text="{oLocalGrandModel>year}"></Text>
-							</cells>
-						</ColumnListItem>
-					</items>
-				</Table>
-			</OverflowToolbar>
-		</footer>
-	</Page>
+			</IconTabBar>
+		</f:content>
+
+	</f:DynamicPage>
 </mvc:View>
