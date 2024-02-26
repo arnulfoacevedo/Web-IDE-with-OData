@@ -183,10 +183,12 @@ sap.ui.define([
 			});
 
 			for (var i = 0; i < finalData.length; i++) {
-				var saleItem = finalData[i];
+				var saleItem = finalData[i]; 
+				saleItem['year'] = 0;
 				dateRange.forEach(function (monthStr, monthIndex) {
 					saleItem[monthIndex] = saleItem[monthIndex] == undefined ? 0 : Number(saleItem[monthIndex]);
 					saleItem[monthIndex] = saleItem[monthIndex] == 0 ? '' : saleItem[monthIndex];
+					saleItem['year'] 	+= Number(saleItem[monthIndex]);
 				});
 				result_sales_data.push(saleItem);
 
