@@ -1,5 +1,5 @@
 <mvc:View controllerName="salesreportZUSD_REPORT.controller.View1" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
-	xmlns:f="sap.f" xmlns:layout="sap.ui.layout" height="100%">
+	xmlns:f="sap.f" xmlns:layout="sap.ui.layout" xmlns:l="sap.ui.layout" xmlns:w="sap.ui.webc.main" height="100%">
 	<f:DynamicPage id="dynamicPageId" stickySubheaderProvider="iconTabBar" class="sapUiNoContentPadding"
 		toggleHeaderOnTitleClick="{/titleClickable}">
 		<!-- DynamicPage Title -->
@@ -94,7 +94,7 @@
 				</items>
 				<content>
 					<Table id="SF1_TABLE" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" alternateRowColors="false"
-						items="{ path: 'oLocalFinalsalesModel>/', sorter: { path: 'Articlecode' , group: '.getCode'} }">
+						items="{ path: 'oLocalFinalsalesModel>/', sorter: { path: 'Articlecode' , group: '.getCode'} }" growingThreshold='1000' growing='true'>
 						<columns>
 							<Column width="5em" hAlign="Right">
 								<Text text="CODE" />

@@ -1,8 +1,13 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
-	"sap/ui/model/json/JSONModel"
-], function (Controller, JSONModel) {
+	"sap/ui/model/json/JSONModel",
+	"sap/m/Dialog",
+	"sap/m/Button",
+	"sap/m/library",
+], function (Controller, JSONModel, Dialog, Button, mobileLibrary) {
 	"use strict";
+
+	var ButtonType = mobileLibrary.ButtonType;
 
 	return Controller.extend("salesreportZUSD_REPORT.controller.View1", {
 		sortby: true,
@@ -15,8 +20,6 @@ sap.ui.define([
 		onInit: function () {
 			this.byId("curDate").setDateValue(new Date());
 			this.byId("curDate").setMaxDate(new Date());
-			// this.onToggleFilterBar();
-			// this.getData();
 		},
 		onSortByCode: function (e) {
 			this.getData(true);
@@ -24,7 +27,6 @@ sap.ui.define([
 			var label = this.sortby ? "Sort by PRODUCT-CODE ↑" : "Sort by PRODUCT-CODE ↓";
 			e.getSource().setText(label);
 		},
-
 
 		onTabSelect: function(e) {
 			var $this = this;
@@ -104,7 +106,7 @@ sap.ui.define([
 		getData: function (sortby) {
 			var $this 				= this;
 			var oLocalModel 		= this.getView().getModel("localModel");
-			var oLocalData 			= oLocalModel.getData().results;
+			var oLocalData 			= oLocalModel.getData().d.results;
 			var selectedDate 		= this.byId('curDate').getDateValue();
 			var dateRange 			= this.setTableHeaderByMonth(selectedDate);
 			var tempData 			= {};
@@ -137,6 +139,7 @@ sap.ui.define([
 					   	}
 					}
 					if (num != notEmptyNum && notEmptyNum != 0) continue;
+					// if (item['TypeCode'] == '' && item['TypeDesc'] == '') continue;
 
 					var uniCode = item['TypeCode'] + '-' + item['TypeDesc'] + '_' + item['ProductSize'];
 					tempData[uniCode] == undefined ? tempData[uniCode] = {} : '';
@@ -149,9 +152,10 @@ sap.ui.define([
 			for (var uniCode in tempData) {
 				var articleCodeArr 		= tempData[uniCode];
 				var productCode_Size 	= uniCode.split('_');
+
 				for (var articleCode in articleCodeArr) {
 					var productMonthItem = {
-						ProductCode: productCode_Size[0],
+						ProductCode: productCode_Size[0] == "-" ? 'N/A - N/A' : productCode_Size[0],
 						ArticleCode: articleCode,
 						ProductSize: productCode_Size[1],
 						CodeName: articleCode
@@ -163,6 +167,7 @@ sap.ui.define([
 					finalData.push(productMonthItem);
 				}
 			}
+			console.log(finalData);
 
 			if (sortby) {
 				if (this.sortby) {
@@ -200,7 +205,7 @@ sap.ui.define([
 				if (finalData.length == (i + 1)) {
 					var row = {}, total = 0;
 					row['ArticleCode'] 		= finalData[i].Articlecode;
-					row['CodeName'] 		= 'sub total';
+					row['CodeName'] 		= 'SUB TOTAL';
 					row['ProductCode'] 		= finalData[i].ProductCode;
 					dateRange.forEach(function (monthStr, monthIndex) {
 						row[monthIndex] = totalRow[monthIndex] == 0 ? '' : totalRow[monthIndex];

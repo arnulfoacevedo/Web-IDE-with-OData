@@ -16,3 +16,7 @@
 tr:has(+ tr[role]) td:nth-child(2) span {
     font-weight: bold;
 }
+
+tr:last-child td:nth-child(2) span {
+    font-weight: bold;
+}
